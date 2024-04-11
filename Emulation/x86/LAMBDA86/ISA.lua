@@ -1,33 +1,33 @@
 local Module = {}
 
---[[
 
-Types of Immediates:
-Numerical Immediate
-Address Immediate
 
-Types of Registers:
-Normal Register
-Control Register
-Using Normal Register as Address Register/Offset Register
+--Types of Immediates:
+--Numerical Immediate
+--Address Immediate
 
-When using Address Register / Offset Register the concept is, if you want to use the contents of the register as an address
-and have NO offset, you need to simply make the value of the offset operand "0"
+--Types of Registers:
+--Normal Register
+--Control Register
+--Using Normal Register as Address Register/Offset Register
 
-"I", -- Numerical Immediate
-"A", -- Address Immediate
-"R", -- Normal Register
-"S", -- Using Register as Offset Register / Address Register
-"O", -- Using as Immediate Offset (Primarily used in instructions where there is a label)
+--When using Address Register / Offset Register the concept is, if you want to use the contents of the register as an address
+--and have NO offset, you need to simply make the value of the offset operand "0"
 
-"I/O", -- Immediate to offset, I don't see this being used lol
-"R/I", -- Register to Immediate :/
-"O/I", -- Offset to Immediate, cuh...
-"A/I", -- Address to Immediate
-"S/I", -- Register Offset to Immediate
-"I/I", -- Ah and the grand one, Immediate to Immediate
+--"I", -- Numerical Immediate
+--"A", -- Address Immediate
+--"R", -- Normal Register
+--"S", -- Using Register as Offset Register / Address Register
+--"O", -- Using as Immediate Offset (Primarily used in instructions where there is a label)
 
---]]
+--"I/O", -- Immediate to offset, I don't see this being used lol
+--"R/I", -- Register to Immediate :/
+--"O/I", -- Offset to Immediate, cuh...
+--"A/I", -- Address to Immediate
+--"S/I", -- Register Offset to Immediate
+--"I/I", -- Ah and the grand one, Immediate to Immediate
+
+
 local BinUtils = require(script.Parent["Binary Utilities"])
 
 local function ReverseTable(t)
