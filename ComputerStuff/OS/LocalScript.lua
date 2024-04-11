@@ -1,0 +1,1 @@
+require(game.ReplicatedStorage.Default.Core)(workspace.screen)

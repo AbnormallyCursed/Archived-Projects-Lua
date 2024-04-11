@@ -1,0 +1,5 @@
+return {
+	passwords = {
+		["user"] = "root",
+	}
+}
