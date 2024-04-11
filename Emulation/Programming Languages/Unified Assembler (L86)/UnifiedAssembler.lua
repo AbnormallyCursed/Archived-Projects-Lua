@@ -1,30 +1,30 @@
---[[ 
-This assembler is considered complete.
 
-The LAMBDA Architecture is an x86-like architecture, this is the assembly for it, a branch of UASM (Unified Assembler) known as UASM-L
-It uses a control byte scheme, the control byte determines where the operand fetches data from, and where it outputs data to
-This allows for any instruction to have any destination and any source, if you manage to get the "Invalid Control Byte" error:
-you know that you really screwed up.
+--This assembler is considered complete.
 
-Generally this is a normal assembler based on GCC style syntax with the Intel Format
-It is "x86 compatible" meaning you can input most (DEFINITELY not all) programs intended for x86 and it will likely work
+--The LAMBDA Architecture is an x86-like architecture, this is the assembly for it, a branch of UASM (Unified Assembler) known as UASM-L
+--It uses a control byte scheme, the control byte determines where the operand fetches data from, and where it outputs data to
+--This allows for any instruction to have any destination and any source, if you manage to get the "Invalid Control Byte" error:
+--you know that you really screwed up.
 
-General Notes:
-1. All instructions must end with the statement closure operator ';'
-2. There are 3 Macros
-  .global (tells the assembler to treat an identifier as a global) 
-  .text (tells the assembler to start parsing the code)
-  .data (tells the assembler to start initializing data)
-3. We declare labels like everyone else, an identifier then a colon ':' then the code block
-4. to declare something is an address, surround it with brackets like so: [5] or [0x5] or [0b101]
-5. we can declare segment offset, just like in x86 it is done like so: [registername-here number-here] 
-make the number negative to reverse offset
-6. registers are strange, we support all the general purpose x86 registers such as EAX, but we also have 165
-you can use whichever suits your fancy, if you want to use all 165 just type R then the number of the register like so: R165 or R32
-7. we support size specifiers, we technically support the use of the PTR/ptr keyword/type but it doesn't really do anything 
-(just like in actual x86-64 assembly lol), other than that it's the standard suite, byte-qword etc.
+--Generally this is a normal assembler based on GCC style syntax with the Intel Format
+--It is "x86 compatible" meaning you can input most (DEFINITELY not all) programs intended for x86 and it will likely work
 
---]]
+--General Notes:
+--1. All instructions must end with the statement closure operator ';'
+--2. There are 3 Macros
+--  .global (tells the assembler to treat an identifier as a global) 
+--  .text (tells the assembler to start parsing the code)
+--  .data (tells the assembler to start initializing data)
+--3. We declare labels like everyone else, an identifier then a colon ':' then the code block
+--4. to declare something is an address, surround it with brackets like so: [5] or [0x5] or [0b101]
+--5. we can declare segment offset, just like in x86 it is done like so: [registername-here number-here] 
+--make the number negative to reverse offset
+--6. registers are strange, we support all the general purpose x86 registers such as EAX, but we also have 165
+--you can use whichever suits your fancy, if you want to use all 165 just type R then the number of the register like so: R165 or R32
+--7. we support size specifiers, we technically support the use of the PTR/ptr keyword/type but it doesn't really do anything 
+--(just like in actual x86-64 assembly lol), other than that it's the standard suite, byte-qword etc.
+
+
 
 local Lexer = require(script.Lexer)
 local BinUtils = require(script["Binary Utilities"])
