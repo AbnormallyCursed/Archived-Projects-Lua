@@ -1,28 +1,28 @@
---[=[
 
-    Lexer repurposed for C by AbnormallyCursed, edits have been made accordingly
-    List of possible tokens:
-		- identifier
-		- keyword
-		- builtin
-		- string
-		- number
-		- comment
-		- operator
-    
-    Original Message and credit:
-	Lexical scanner for creating a sequence of tokens from Lua source code.
-	This is a heavily modified and Roblox-optimized version of
-	the original Penlight Lexer module:
-	https://github.com/stevedonovan/Penlight
-	Authors:
-		stevedonovan <https://github.com/stevedonovan> ----------- Original Penlight lexer author
-		ryanjmulder <https://github.com/ryanjmulder> ------------- Penlight lexer contributer
-		mpeterv <https://github.com/mpeterv> --------------------- Penlight lexer contributer
-		Tieske <https://github.com/Tieske> ----------------------- Penlight lexer contributer
-		boatbomber <https://github.com/boatbomber> --------------- Roblox port, added builtin token,
-		howmanysmall <https://github.com/howmanysmall> ----------- Lua + Roblox optimizations
---]=]
+
+--   Lexer repurposed for C by AbnormallyCursed, edits have been made accordingly
+--   List of possible tokens:
+--	- identifier
+--	- keyword
+--	- builtin
+--	- string
+--	- number
+--	- comment
+--	- operator
+
+--   Original Message and credit:
+--Lexical scanner for creating a sequence of tokens from Lua source code.
+--This is a heavily modified and Roblox-optimized version of
+--the original Penlight Lexer module:
+--https://github.com/stevedonovan/Penlight
+--Authors:
+--	stevedonovan <https://github.com/stevedonovan> ----------- Original Penlight lexer author
+--	ryanjmulder <https://github.com/ryanjmulder> ------------- Penlight lexer contributer
+--	mpeterv <https://github.com/mpeterv> --------------------- Penlight lexer contributer
+--	Tieske <https://github.com/Tieske> ----------------------- Penlight lexer contributer
+--	boatbomber <https://github.com/boatbomber> --------------- Roblox port, added builtin token,
+--	howmanysmall <https://github.com/howmanysmall> ----------- Lua + Roblox optimizations
+
 
 local lexer = {}
 
@@ -70,7 +70,7 @@ local lua_matches = {
 	{ Prefix .. NUMBER_B .. Suffix, "number" },
 	{ Prefix .. NUMBER_C .. Suffix, "number" },
 	{ Prefix .. NUMBER_D .. Suffix, "number" },
-	
+
 	-- Strings
 	{ Prefix .. STRING_EMPTY .. Suffix, "string" },
 	{ Prefix .. STRING_PLAIN .. Suffix, "string" },
@@ -79,7 +79,7 @@ local lua_matches = {
 	{ Prefix .. STRING_MULTI .. Suffix, "string" },
 	{ Prefix .. STRING_MULTI_INCOMP .. Suffix, "string" },
 	{ Prefix .. STRING_INTER .. Suffix, "string_inter" },
-	
+
 	-- <> cause lazy
 	{ Prefix .. "([<>])+" .. Suffix, "string" },
 	{ Prefix .. "([<>])[^\n]-([^\\]%1)" .. Suffix, "string" },
@@ -88,7 +88,7 @@ local lua_matches = {
 	--{ Prefix .. STRING_MULTI .. Suffix, "string" },
 	--{ Prefix .. STRING_MULTI_INCOMP .. Suffix, "string" },
 	{ Prefix .. "<[^\n]->" .. Suffix, "string_inter" },
-	
+
 	-- Comments
 	{ Prefix .. COMMENT_MULTI .. Suffix, "comment" },
 	{ Prefix .. COMMENT_MULTI_INCOMP .. Suffix, "comment" },
@@ -137,7 +137,7 @@ function lexer.scan(s: string)
 				local content = string.sub(s, start, finish)
 				local rawToken = TOKENS[tokenType]
 				local processedToken = rawToken
-								
+
 				-- Process token
 				if rawToken == "var" then
 					-- Since we merge spaces into the tok, we need to remove them
