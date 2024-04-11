@@ -13,13 +13,9 @@ local random = math.random
 --       Addendum: Body Heat generation is a major thing with over 19 entries, implementation recommended!
 -- TODO: For sickness, there are factors that cause effects to vary. For example, if the sickness is from poisoning damage occurs, else no.
 
---[[
-
-NOTE:
-a LOT of implementations of stuff are NOT defined in pzwiki, you will have to study how the game treats x and y for these cases
-as well as come up with your own idea of what the effect/s should be for a given circumstance
-
---]]
+--NOTE:
+--a LOT of implementations of stuff are NOT defined in pzwiki, you will have to study how the game treats x and y for these cases
+--as well as come up with your own idea of what the effect/s should be for a given circumstance
 
 function Module:StartRealismEngine()
 	local RealismEngine = {
